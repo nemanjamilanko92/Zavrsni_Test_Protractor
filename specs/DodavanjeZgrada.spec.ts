@@ -33,8 +33,7 @@ describe('testiranje Dodavanja Zgrade',()=>{
     await zgradeDodavanjePage.dodavanjeZgrade("Vrbas", "Marsala Tita", "21", "1");
     expect(await zgradeDodavanjePage.getAlertMsg()).toBe("Uspesno ste dodali zgradu!");
     await zgradeDodavanjePage.pregled.click();
-   await zgradePregledPage.proveraZgrade("Marsala Tita", "21", "Vrbas")
-    expect(await zgradePregledPage.getAdresaZgradeText()).toBe("Marsala Tita 21, Vrbas");
+    expect(await zgradePregledPage.proveraZgrade("Marsala Tita", "21", "Vrbas")).toBeTruthy()
   })
 
   it('Pozitivni Test Reset Dugme',async()=>{

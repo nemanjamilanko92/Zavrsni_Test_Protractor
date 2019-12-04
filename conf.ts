@@ -8,10 +8,10 @@ export let config: Config = {
     browserName: 'chrome'
   },
   specs: [ // './specs/Login.spec.js' 
-          // './specs/DodavanjeZgrada.spec.js'
+              './specs/DodavanjeZgrada.spec.js'
            // './specs/PregledZgrada.spec.js'
            // './specs/DodavanjeStanara.spec.js'
-            './specs/PregledStanara.spec.js'
+           // './specs/PregledStanara.spec.js'
            // './specs/Stanovi.spec.js'
            // './specs/Obavestenja.spec.js'
            // './specs/PredloziTackeDnevnogReda.spec.js'
