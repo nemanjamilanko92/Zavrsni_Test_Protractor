@@ -30,21 +30,23 @@ export class ZgradePregledPage{
   }
   
   //metoda za potvrdu da li je stanar/zgrada uneta u bazu
-	public async  proveraZgrade (ulica: string, broj: string, mesto: string){
-    let provera: string [];
+	public async  proveraZgrade (ulica: string, broj: string, mesto: string):Promise<boolean>{
+    let provera: string []=[];
       provera.push(ulica+" "+broj+","+ " " + mesto);
-      let adrese: string [];
+      let adrese: string []=[];
       let tableRow:ElementArrayFinder =  element.all(by.xpath("//tbody/tr"));
-      const table_rowSize:number = tableRow.size();
+   
+      const table_rowSize:number = await tableRow.count();
       for(let i:number = 0;i<table_rowSize;i++){
         
-        let Columns_row:ElementArrayFinder = tableRow[i].findElements(By.cssSelector("td:nth-of-type(1)"));
-        const columns_count = Columns_row.size();
+        let Columns_row:ElementArrayFinder=  tableRow.get(i).all(by.css("td:nth-of-type(1)"));
+        let columns_count =await Columns_row.count();
         for ( let column:number = 0; column < columns_count; column++) {
             
-            adrese.push(Columns_row[column].getText()); 
+            adrese.push(await Columns_row.get(column).getText()); 
          }        
       }
+      console.log(adrese)
       const found = provera.some(r=> adrese.includes(r))
       return found;   
   }

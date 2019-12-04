@@ -3,17 +3,14 @@ import {LoginPage} from "../pageObj/login.page"
 import { AdminNavBarPage } from "../pageObj/adminNavBar.page";
 import { StanariDodavanjePage } from "../pageObj/stanariDodavanje.page";
 import { StanariPregledPage } from "../pageObj/stanariPregled.page";
-import { Select } from "../helperClass/Select";
-import { async } from "q";
 describe('testiranje Dodavanja Zgrade',()=>{
-  let select:Select;
+
   let loginPage:LoginPage;
   let adminNavBarPage:AdminNavBarPage;
   let stanariDodavanjePage:StanariDodavanjePage;
   let stanariPregledPage:StanariPregledPage;
   beforeAll(async()=>{
     //instanciranje objekata
-    select=new Select();
     adminNavBarPage=new AdminNavBarPage();
     loginPage=new LoginPage();
     stanariDodavanjePage=new StanariDodavanjePage();
@@ -33,18 +30,19 @@ describe('testiranje Dodavanja Zgrade',()=>{
 
     //u polje za pretragu stanara unosimo ime i prezime stanara
     //ocekujemo da ce se stanar pojaviti u filtriranoj listi
+   
+    await stanariPregledPage.UnosPretrage("Marko")
+    expect(await stanariPregledPage.proveraStanara("Marko", "Markovic", "(marko@gmail.com)")).toBeTruthy()
 
-    await stanariPregledPage.UnosPretrage("Gospodin Predsednik")
-    expect(stanariPregledPage.getimeIPrezimeGosPred()).toBe("Gospodin Predsednik");
   })
 
   it("Pozitivan Test Pretrage Stanara 2",async()=>{
 
     //u polje za pretragu stanara unosimo mail stanara
     //ocekujemo da ce se stanar pojaviti u filtriranoj listi
-
     await stanariPregledPage.UnosPretrage("predSkup@gmail.com")
-    expect(stanariPregledPage.getimeIPrezimeGosPred()).toBe("Gospodin Predsednik");
+    expect(await stanariPregledPage.proveraStanara("Gospodin", "Predsednik", "(predSkup@gmail.com)")).toBeTruthy()
+    
   })
 
   it("Pozitivan Test Pretrage Stanara 3",async()=>{
@@ -53,7 +51,7 @@ describe('testiranje Dodavanja Zgrade',()=>{
     //ocekujemo poruku da ni jedan stanar nije pronadjen
 
     await stanariPregledPage.UnosPretrage("AAAAAAAAA")
-    expect(stanariPregledPage.geterrMessZaNepostojecegStanara()).toBe("Nijedan stanar sa trazenim kriterijumom nije prondajen!");
+    expect(await stanariPregledPage.geterrMessZaNepostojecegStanara()).toBe("Nijedan stanar sa trazenim kriterijumom nije prondajen!");
   })
 })  
 })

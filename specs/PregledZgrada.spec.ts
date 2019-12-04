@@ -30,8 +30,9 @@ describe('testiranje Dodavanja Zgrade',()=>{
     //u polja za pretragu zgrada unosimo adresu i mesto zgrade
     //ocekujemo da ce se zgrada pojaviti u filtriranoj listi
 
-    await zgradePregledPage.UnosPretrage("Marsala Tita", "Vrbas");
-    expect(await zgradePregledPage.getAdresaZgradeText()).toBe("Marsala Tita 21, Vrbas");
+   await zgradePregledPage.UnosPretrage("Marsala Tita", "Vrbas");
+   expect(await zgradePregledPage.proveraZgrade("Marsala Tita", "21", "Vrbas")).toBeTruthy()
+   
   })
 
   it('Pozitivni Test Pretrage Zgrade 2',async()=>{
@@ -40,7 +41,7 @@ describe('testiranje Dodavanja Zgrade',()=>{
     //ocekujemo da ce se zgrada pojaviti u filtriranoj listi
 
     await zgradePregledPage.UnosPretrage("Marsala Tita", "");
-    expect(await zgradePregledPage.getAdresaZgradeText()).toBe("Marsala Tita 21, Vrbas");
+    expect(await zgradePregledPage.proveraZgrade("Marsala Tita", "21", "Vrbas")).toBeTruthy()
   })
 
   it('Pozitivni Test Pretrage Zgrade 3',async()=>{
@@ -49,7 +50,7 @@ describe('testiranje Dodavanja Zgrade',()=>{
     //ocekujemo da ce se zgrada pojaviti u filtriranoj listi
 
     await zgradePregledPage.UnosPretrage("", "Vrbas");
-    expect(await zgradePregledPage.getAdresaZgradeText()).toBe("Marsala Tita 21, Vrbas");
+    expect(await zgradePregledPage.proveraZgrade("Marsala Tita", "21", "Vrbas")).toBeTruthy()
   })
 
   it('Pozitivni Test Pretrage Zgrade 4',async()=>{
