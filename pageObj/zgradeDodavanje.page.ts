@@ -1,36 +1,21 @@
 import {browser,element,by,By,ElementFinder,$, $$,protractor} from 'protractor';
 let Ec = protractor.ExpectedConditions;
 export class ZgradeDodavanjePage{
-  private  broj:ElementFinder;
-  private  brojStanova:ElementFinder;
-  private  mesto:ElementFinder;
-  public  pregled:ElementFinder;
-  public  resetujte:ElementFinder;
-  private  ulica:ElementFinder;
-  public  dodavanje:ElementFinder;
-  public  dodajte:ElementFinder;
-  private  errMessMesto:ElementFinder;
-  private  errMessUlica:ElementFinder;
-  private  errMessBroj:ElementFinder;
-  private  errMessBrojStanova:ElementFinder;
-  private  errMessBrojNula:ElementFinder;
-  private  alertMsg:ElementFinder;
-  constructor(){
-    this.broj=$("#broj");
-    this.brojStanova=$("#brojStanova");
-    this.mesto=element(by.id("mesto"));
-    this.pregled=element(by.css("button.btn.btn-outline-primary"));
-    this.resetujte=element(by.xpath("//button[@class='btn btn-danger']"));
-    this.ulica=$("#ulica");
-    this.dodavanje=element(by.xpath("//li[@class='nav-item active']//button[@class='btn btn-primary']"));
-    this.dodajte=element(by.xpath("//button[contains(text(),'Dodajte')]"));
-    this.errMessMesto=element(by.xpath("//div[@class='row justify-content-md-center']//div[1]//div[1]//div[1]"));
-    this.errMessUlica=element(by.xpath("//div[2]//div[1]//div[1]"));
-    this.errMessBroj=element(by.xpath("/html/body/app-root/app-zgrade/div/app-dodaj-zgradu/div/form/fieldset/div[3]/div/div"));
-    this.errMessBrojStanova=element(by.xpath("//div[4]//div[1]//div[1]"));
-    this.errMessBrojNula=element(by.xpath("/html/body/app-root/app-zgrade/div/app-dodaj-zgradu/div/form/fieldset/div[3]/div/div"));
-    this.alertMsg=element(by.xpath("//*[@id=\"toast-container\"]/div/div")); 
-  }
+  private  broj:ElementFinder=$("#broj");
+  private  brojStanova:ElementFinder=$("#brojStanova");
+  private  mesto:ElementFinder=$("#mesto");
+  public  pregled:ElementFinder=$("button.btn.btn-outline-primary");
+  public  resetujte:ElementFinder=element(by.xpath("//button[@class='btn btn-danger']"));
+  private  ulica:ElementFinder=$("#ulica");
+  public  dodavanje:ElementFinder=element(by.xpath("//li[@class='nav-item active']//button[@class='btn btn-primary']"));
+  public  dodajte:ElementFinder=element(by.xpath("//button[contains(text(),'Dodajte')]"));
+  private  errMessMesto:ElementFinder=element(by.xpath("//div[@class='row justify-content-md-center']//div[1]//div[1]//div[1]"));
+  private  errMessUlica:ElementFinder=element(by.xpath("//div[2]//div[1]//div[1]"));
+  private  errMessBroj:ElementFinder=element(by.xpath("/html/body/app-root/app-zgrade/div/app-dodaj-zgradu/div/form/fieldset/div[3]/div/div"));
+  private  errMessBrojStanova:ElementFinder=element(by.xpath("//div[4]//div[1]//div[1]"));
+  private  errMessBrojNula:ElementFinder=element(by.xpath("/html/body/app-root/app-zgrade/div/app-dodaj-zgradu/div/form/fieldset/div[3]/div/div"));
+  private  alertMsg:ElementFinder=element(by.xpath("//*[@id=\"toast-container\"]/div/div"));
+
 
   public async dodavanjeZgrade(mesto: string, ulica: string, broj: string, brojStanova: string){
     await this.mesto.clear();

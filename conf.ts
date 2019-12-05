@@ -1,14 +1,15 @@
 import {Config,browser} from 'protractor';
-
 let Jasmine2HtmlReporter = require('protractor-jasmine2-html-reporter');
+import {SpecReporter} from "jasmine-spec-reporter";
 export let config: Config = {
  SELENIUM_PROMISE_MANAGER: false,
   framework: 'jasmine',
   capabilities: {
     browserName: 'chrome'
   },
-  specs: [ // './specs/Login.spec.js' 
-              './specs/DodavanjeZgrada.spec.js'
+  specs: [ 
+               './specs/Login.spec.js' 
+           //   './specs/DodavanjeZgrada.spec.js'
            // './specs/PregledZgrada.spec.js'
            // './specs/DodavanjeStanara.spec.js'
            // './specs/PregledStanara.spec.js'
@@ -26,16 +27,31 @@ export let config: Config = {
   },
   getPageTimeout: 30000,
   onPrepare:()=>{
-   browser.manage().timeouts().implicitlyWait(5000)
+   browser.manage().timeouts().implicitlyWait(1000)
     browser.driver.manage().window().maximize();
    // browser.ignoreSynchronization = true;
     jasmine.getEnv().addReporter(
       new Jasmine2HtmlReporter({
-        savePath: 'target/screenshots',
-        screenshotsFolder: 'images',
-     
+        savePath: 'target/report',
+        screenshotsFolder: 'screenshots',
+        takeScreenshots: true,
+        takeScreenshotsOnlyOnFailures: true,
         fileNameDateSuffix: true,
-        fixedScreenshotName: true
+        fixedScreenshotName: true,
+        cleanDestination: false,
+        fileNameSeparator: '-',
+        
+      }));
+      jasmine.getEnv().addReporter(new SpecReporter({
+        spec: {
+          displayStacktrace: true,
+          displaySuccessful: true,
+          displayFailed: true
+        },
+        summary: {
+          displayDuration: true,
+          displayErrorMessages: true
+        }
       }));
     
   },

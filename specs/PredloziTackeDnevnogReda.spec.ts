@@ -37,10 +37,10 @@ describe('testiranje Dodavanja Tacke Dnevnog Reda', () => {
   
   it('Imena Tacke Dnevnog Reda Pozitivan', async () => {
 
-    //klikcemo na dugme za izmenu tacke dnevnog reda
+    // klikcemo na dugme za izmenu tacke dnevnog reda
     //dodajemo izmenu u tacku dnevnog reda
     //ocekujemo poruku o uspesnoj promeni tacke dnevnog reda i proveravamo da je text stvarno izmenjen
-
+    
     await zgradeNavBar.predoloziTackeDnevnogReda.click();
     await predloziTackeDnevnogReda.IzmeniTackeDnevnogReda("haha");
     expect(await predloziTackeDnevnogReda.getAlertMsgText()).toBe("Tacka uspesno izmenjena");

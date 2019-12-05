@@ -38,6 +38,7 @@ describe('testiranje Dodavanja Stanara',()=>{
     await Select.selectByIndex(3,stanariPregledPage.prikazi);
     expect(await stanariPregledPage.getImeIPrezimeStanar()).toBe("Slavisa1 slavkovic");
     await stanariDodavanjePage.registracija.click()
+  
   })
 
   it('Pozitivni Test Reset Dugme',async()=>{
