@@ -28,6 +28,7 @@ describe('testiranje Dodavanja Stanara',()=>{
 
   it('Pozitivni Test Dodavanja Stanara',async()=>{
 //test
+//asdsad
     //unosimo stanara sa ocekivanim kredencijalima
     //ocekujemo poruku o uspesnom dodavanju
     //zatim proveravamo da li je stanar stvarno unesen u listu stanara
