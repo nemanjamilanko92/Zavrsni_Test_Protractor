@@ -27,7 +27,7 @@ describe('testiranje Dodavanja Stanara',()=>{
   describe("Pozitivni testovi",()=>{
 
   it('Pozitivni Test Dodavanja Stanara',async()=>{
-
+//test
     //unosimo stanara sa ocekivanim kredencijalima
     //ocekujemo poruku o uspesnom dodavanju
     //zatim proveravamo da li je stanar stvarno unesen u listu stanara
